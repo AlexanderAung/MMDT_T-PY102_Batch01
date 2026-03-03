@@ -14,10 +14,11 @@ Student instructions:
 - Use pointer manipulation (don’t solve by converting the whole list to an int or Python list).
 """
 
+
 class Node:
     def __init__(self, val=0, next=None):
         self.val = val
-        self.next = next 
+        self.next = next
 
 
 class SinglyLinkedList:
@@ -52,6 +53,7 @@ class SinglyLinkedList:
 #  REQUIRED FUNCTIONS (Implement these)
 # ============================================================
 
+
 def reverseList(head):
     """
     LeetCode 206 — Reverse Linked List
@@ -59,21 +61,18 @@ def reverseList(head):
     Time: O(n), Space: O(1)
     """
     # TODO: Implement
-    
-    def reversed_list(sl):
-    curr = sl.head
+
+    curr = head
     prev = None
 
     while curr:
         nxt = curr.next
-        curr.next = prev 
-        prev = curr 
+        curr.next = prev
+        prev = curr
         curr = nxt
-        
-       
-    sl.head = prev 
-    return sl
-        
+
+    return prev
+
 
 def doubleIt(head):
     """
@@ -95,23 +94,20 @@ def doubleIt(head):
 
     def dfs(node):
         if not node:
-            return 0  # no carry
-        
-        carry = dfs(node.next)  # go to the end first
-        
+            return 0
+
+        carry = dfs(node.next)
+
         total = node.val * 2 + carry
         node.val = total % 10
-        
-        return total // 10  # propagate carry upward
-    
+
+        return total // 10
+
     carry = dfs(head)
-    
+
     if carry:
         new_head = Node(carry)
         new_head.next = head
         return new_head
-    
+
     return head
-
-    
-
