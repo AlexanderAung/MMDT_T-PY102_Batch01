@@ -153,7 +153,35 @@ def first_non_repeating(stream: str) -> str:
       Output: "a#bb"
     """
     # TODO: implement using a queue + counts
-    raise NotImplementedError
+    char_counter = {}
+    q = Queue()
+
+    result_string = ""
+
+    for current_char in stream:
+        if current_char not in char_counter:
+            char_counter[current_char] = 1
+        else:
+            char_counter[current_char] += 1
+
+        if char_counter[current_char] == 1:
+            q.push(current_char)
+
+        while q.size() > 0:
+            first_candidate_character = q.peek()
+
+            if char_counter[first_candidate_character] > 1:
+                q.pop()
+            else:
+                break
+
+        # decide what to append to result
+        if q.size() > 0:
+            result_string += q.peek()
+        else:
+            result_string += "#"
+
+    return result_string
 
 
 def hot_potato(names: list[str], k: int) -> str:
