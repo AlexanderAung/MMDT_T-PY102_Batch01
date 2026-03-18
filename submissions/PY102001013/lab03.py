@@ -158,4 +158,14 @@ def insert_quadratic_probing(table: list[int | None], key: int) -> list[int | No
         return x % len(y)
 
     hash = hashFunc(key, table)
+
+    if table[hash] is None:
+        table[hash] = key
+    else:
+        for i in range(len(table)):
+            idx = (hash + i * i) % len(table)
+            if table[idx] is None:
+                table[idx] = key
+                break
+
     return table
