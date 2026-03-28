@@ -160,34 +160,27 @@ def build_submission_tree(base_path: str, folder1: str, folder2: str) -> TreeNod
 
     return rt 
     """
+
     # folder1 — only .gitkeep
 
-    base = Path("submissions")
-    root = TreeNode(base.name)
+    fA = TreeNode(folder1)  # no left child because no files
 
-    f1_name = "PY1020010013"
-    f2_name = "PY1020010014"
+    # folder2
+    b0 = TreeNode("lab00.py")
+    b1 = TreeNode("lab01.py")
+    b2 = TreeNode("lab02.py")
+    b3 = TreeNode("lab03.py")
+    res2 = TreeNode("autograder_results.json")
 
-    left_folder = TreeNode(f1_name)
-    right_folder = TreeNode(f2_name)
+    b0.right = b1
+    b1.right = b2
+    b2.right = b3
+    b3.right = res2
 
-    root.left = left_folder
-    root.right = right_folder
+    fB = TreeNode(folder2, left=b0)
 
-    def chain_files(folder_node: TreeNode, folder_path: Path):
-        prev = None
-        for file_path in sorted(folder_path.iterdir(), key=lambda f: f.name):
-            if file_path.is_file():
-                new_node = TreeNode(file_path.name)
-                if folder_node.left is None:
-                    folder_node.left = new_node
-                else:
-                    prev.right = new_node
-                prev = new_node
-
-    # Build chains
-    chain_files(left_folder, base / f1_name)
-    chain_files(right_folder, base / f2_name)
+    # root
+    root = TreeNode(base_path, left=fA, right=fB)
 
     return root
 
