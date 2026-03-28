@@ -123,17 +123,18 @@ def build_submission_tree(base_path: str, folder1: str, folder2: str) -> TreeNod
     """
     # -------- folder1 chain --------
 
-    l0 = TreeNode("lab00.py")
-    l1 = TreeNode("lab01.py")
-    l2 = TreeNode("lab02.py")
-    l3 = TreeNode("lab03.py")
-    ag = TreeNode("autograder_results.json")
+    # l1 = TreeNode("lab01.py")
+    # l2 = TreeNode("lab02.py")
+    # l3 = TreeNode("lab03.py")
+    # l0 = TreeNode("lab00.py")
+    # ag = TreeNode("autograder_results.json")
 
-    l0.r = l1
-    l1.r = l2
-    l2.r = l3
-    l3.r = ag
+    # l0.r = l1
+    # l1.r = l2
+    # l2.r = l3
+    # l3.r = ag
 
+    l0 = TreeNode(".gitkeep")
     f1 = TreeNode(folder1)
     f1.l = l0
 
