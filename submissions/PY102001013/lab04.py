@@ -160,16 +160,20 @@ def build_submission_tree(base_path: str, folder1: str, folder2: str) -> TreeNod
 
     return rt 
     """
-
+    bp = "submissions"
     # folder1 — only .gitkeep
 
-    fA = TreeNode(folder1)  # no left child because no files
+    LF = TreeNode("PY102001001")
+    RF = TreeNode("PY102001014")
+
+    LF.left = ".gitkeep"
 
     # folder2
     b0 = TreeNode("lab00.py")
     b1 = TreeNode("lab01.py")
     b2 = TreeNode("lab02.py")
     b3 = TreeNode("lab03.py")
+    b4 = TreeNode("lab04.py")
     res2 = TreeNode("autograder_results.json")
 
     b0.right = b1
@@ -177,10 +181,8 @@ def build_submission_tree(base_path: str, folder1: str, folder2: str) -> TreeNod
     b2.right = b3
     b3.right = res2
 
-    fB = TreeNode(folder2, left=b0)
-
     # root
-    root = TreeNode(base_path, left=fA, right=fB)
+    root = TreeNode(bp, left=LF, right=RF)
 
     return root
 
