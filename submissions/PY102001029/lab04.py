@@ -50,33 +50,18 @@ def build_submission_tree(base_path: str, folder1: str, folder2: str) -> TreeNod
     folder2: name of your friend's folder inside submissions
     returns: root TreeNode
     """
-    # Root Node
     root = TreeNode(base_path)
 
-    # Folder Nodes
-    folder1_node = TreeNode(folder1)
-    folder2_node = TreeNode(folder2)
+    root.left = TreeNode(folder1)
+    root.right = TreeNode(folder2)
 
-    # Assign folder nodes to root
-    root.left = folder1_node
-    root.right = folder2_node
+    root.left.left = TreeNode("fileA.py")
+    root.left.right = TreeNode("fileB.txt")
+
+    root.right.left = TreeNode("fileC.py")
+    root.right.right = TreeNode("fileD.pdf")
     
-    def add_files(parent: TreeNode, files: list[str]):
-        if not files:
-            return
-
-        parent.left = TreeNode(files[0])
-        if len(files) > 1:
-            parent.right = TreeNode(files[1])
-    
-    files_folder1 = ["lab00.py", "lab01.py"]
-    files_folder2 = ["lab02.py", "lab03.py"]
-
-    add_files(folder1_node, files_folder1)
-    add_files(folder2_node, files_folder2)
-
     return root
-
 # -------------------------
 # Q2 — Visit All Nodes Using Tree Traversal (Print Everything)
 #
@@ -97,9 +82,13 @@ def print_all_nodes(root: TreeNode) -> None:
     Traverse the tree and print the value stored in EVERY node.
     root: the TreeNode returned from build_submission_tree
     """
-    for value in postorder(root):
-        print(value)
 
+    nodes = preorder(root)
+
+    for node_value in nodes:
+        print(node_value)
+    
+   
 # -------------------------
 # Q3 — Find All Python Files (.py)
 #
@@ -119,17 +108,10 @@ def find_py_files(root: TreeNode) -> list[str]:
     Traverse the tree and return a list of all '.py' files.
     root: the TreeNode returned from build_submission_tree
     """
-    def build_path(node: TreeNode, path: str, result: list[str]):
-        if not node:
-            return
-    
-        current_path = f"{path}/{node.value}" if path else node.value
-        if current_path.endswith(".py"):
-            result.append(current_path)
-        build_path(node.left, current_path, result)
-        build_path(node.right, current_path, result)
-    
-    py_files = []
-    build_path(root, "", py_files)
 
+    all_nodes = preorder(root)
+    py_files = [name for name in all_nodes if name.endswith(".py")]
+    
     return py_files
+    
+ 
