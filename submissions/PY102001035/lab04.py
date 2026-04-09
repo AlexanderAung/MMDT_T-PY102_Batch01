@@ -85,7 +85,7 @@ def print_all_nodes(root: TreeNode) -> None:
     all_nodes = preorder(root)
     for node in all_nodes:
         print(node)
-    raise NotImplementedError("Implement Q2 here.")
+    #raise NotImplementedError("Implement Q2 here.")
 
 
 # -------------------------
@@ -107,21 +107,21 @@ def find_py_files(root: TreeNode) -> list[str]:
     Traverse the tree and return a list of all '.py' files.
     root: the TreeNode returned from build_submission_tree
     """
-    all_nodes = postorder(root)
-    tmp = []
+    all_nodes = preorder(root)
     py_files = []
+    current_folder = None
 
-    for node in all_nodes:
-        if node.endswith(".py"):
-            tmp.append(node)
+    for value in all_nodes:
+        if value.endswith(".py"):
+            if current_folder is not None:
+                py_files.append(current_folder + "/" + value)
         else:
-            while(tmp):
-                file_path = node + "/" + tmp.pop()
-                py_files.append(file_path)
-
+            if value != root.value:
+                current_folder = value
     return py_files
     raise NotImplementedError("Implement Q3 here.")
 
 # myNode = build_submission_tree("submissions","PY102001035", "PY102001036")
 # print_all_nodes(myNode)
-# print(find_py_files(myNode))
+# allFiles = find_py_files(myNode)
+# print(allFiles)
