@@ -20,25 +20,25 @@ def load_lab06():
 @pytest.mark.points(3)
 def test_q1_basic():
     lab = load_lab06()
-    assert hasattr(lab, "schedule_new_job"), "schedule_new_job is missing"
+    assert hasattr(lab, "schedule_next_job"), "schedule_new_job is missing"
 
     arr = [12, 29, 76, 31, 65, 80, 77]
-    result = lab.schedule_new_job(arr[:], 10)
+    result = lab.schedule_next_job(arr[:], 10)
     assert result == [10, 12, 76, 29, 65, 80, 77, 31]
 
 @pytest.mark.points(4)
 def test_q1_level1():
     lab = load_lab06()
     arr = [12, 29, 76, 31, 65, 80, 77]
-    result = lab.schedule_new_job(arr[:], 90)
+    result = lab.schedule_next_job(arr[:], 90)
     assert result == [12, 29, 76, 31, 65, 80, 77, 90]
 
     arr = [12, 29, 76, 31, 65, 80, 77]
-    result = lab.schedule_new_job(arr[:], 29)
+    result = lab.schedule_next_job(arr[:], 29)
     assert result == [12, 29, 76, 29, 65, 80, 77, 31]
 
     arr = [20]
-    result = lab.schedule_new_job(arr[:], 10)
+    result = lab.schedule_next_job(arr[:], 10)
     assert result == [10, 20]
 
 

@@ -1,30 +1,42 @@
 {
-  "earned": 15,
+  "earned": 5,
   "max": 20,
   "details": [
     {
-      "nodeid": "autograder/tests/test_lab05.py::test_q1_sorted_array_to_bst_inorder_correct",
-      "outcome": "passed",
-      "points": 5,
-      "max_points": 5
+      "nodeid": "autograder/tests/test_lab06.py::test_q1_basic",
+      "outcome": "failed",
+      "points": 0,
+      "max_points": 3
     },
     {
-      "nodeid": "autograder/tests/test_lab05.py::test_q2_sorted_array_to_bst_middle_index_rule",
-      "outcome": "passed",
-      "points": 5,
-      "max_points": 5
+      "nodeid": "autograder/tests/test_lab06.py::test_q1_level1",
+      "outcome": "failed",
+      "points": 0,
+      "max_points": 4
     },
     {
-      "nodeid": "autograder/tests/test_lab05.py::test_q3_insert_bst_inserts_and_ignores_duplicates",
-      "outcome": "passed",
-      "points": 5,
-      "max_points": 5
+      "nodeid": "autograder/tests/test_lab06.py::test_q2_basic",
+      "outcome": "failed",
+      "points": 0,
+      "max_points": 3
     },
     {
-      "nodeid": "autograder/tests/test_lab05.py::test_q4_build_class_bst_inorder_and_height",
+      "nodeid": "autograder/tests/test_lab06.py::test_q2_level2",
       "outcome": "failed",
       "points": 0,
       "max_points": 5
+    },
+    {
+      "nodeid": "autograder/tests/test_lab06.py::test_q3_basic",
+      "outcome": "passed",
+      "points": 2,
+      "max_points": 2
+    },
+    {
+      "nodeid": "autograder/tests/test_lab06.py::test_q3_level1",
+      "outcome": "passed",
+      "points": 3,
+      "max_points": 3
     }
   ],
   "student_dir": "/Volumes/Data/MMDT_T-PY102_Batch01/submissions/PY102001012"

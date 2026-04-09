@@ -54,17 +54,13 @@ def build_submission_tree(base_path: str, folder1: str, folder2: str) -> TreeNod
     base_path = "submissions"
     folder1 = "PY102001015"
     folder2 = "PY102001016"
-
-    root = TreeNode(base_path)
-    root.left = TreeNode(folder1)
-    root.right = TreeNode(folder2)
-
-    root.left.left = TreeNode("lab00.py")
-    root.left.right = TreeNode("lab01.py")
-
-    root.right.left = TreeNode("lab02.py")
-    root.right.right = TreeNode("lab03.py")
-
+    fileA = TreeNode("fileA.py")
+    fileB = TreeNode("fileB.py")
+    fileC = TreeNode("fileC.py")
+    fileD = TreeNode("fileD.py")
+    folder_node1 = TreeNode(folder1, fileA, fileB)
+    folder_node2 = TreeNode(folder2, fileC, fileD)
+    root = TreeNode(base_path, folder_node1, folder_node2)
     
     return root
 
@@ -92,7 +88,7 @@ def print_all_nodes(root: TreeNode) -> None:
     """
     all_nodes = preorder(root)
     for node in all_nodes:
-        if node.startswith("PY102") or node.endswith(".py"):
+        if node is not None:
             print(node)
     return
     raise NotImplementedError("Implement Q2 here.")

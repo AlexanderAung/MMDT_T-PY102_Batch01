@@ -123,5 +123,7 @@ def build_class_bst():
     max_iter = height(root)
     print(max_iter)
 
+    return root
+
     # raise NotImplementedError("Implement Q3 here.")
 build_class_bst()
