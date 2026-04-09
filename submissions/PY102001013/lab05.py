@@ -151,8 +151,8 @@ def build_class_bst():
     return root
 
 
+# my own tests
 def main():
-
     root = sorted_array_to_bst([1, 2, 3, 4, 5, 6, 7])
     insert_bst(root, 30)
     build_class_bst()
