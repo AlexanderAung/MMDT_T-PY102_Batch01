@@ -42,11 +42,10 @@ def _build(nums: List[int], left: int, right: int):
     if left > right:
         return None
     mid = (left + right) // 2
-    node = TreeNode(nums[mid])
-    node.left = _build(nums, left, mid - 1)
-    node.right = _build(nums, mid + 1, right)
-    return node
-    raise NotImplementedError("Implement Q1 here.")
+    root = TreeNode(nums[mid])
+    root.left = _build(nums, left, mid - 1)
+    root.right = _build(nums, mid + 1, right)
+    return root
 
 def sorted_array_to_bst(nums: List[int]) -> Optional[TreeNode]:
    new_tree_root = _build(nums, 0, len(nums) - 1)
@@ -66,15 +65,17 @@ def sorted_array_to_bst(nums: List[int]) -> Optional[TreeNode]:
 # - Return the root of the tree after insertion.
 # ------------------------------------------------------------
 
-def insert_bst(root: Optional[TreeNode], value: int)
+def insert_bst(root: Optional[TreeNode], value: int) -> TreeNode:
     if root is None:
         return TreeNode(value)
+    if value == root.value:
+        return root
     if value < root.value:
         root.left = insert_bst(root.left, value)
     elif value > root.value:
         root.right = insert_bst(root.right, value)
+
     return root
-    raise NotImplementedError("Implement Q2 here.")
 
 # ------------------------------------------------------------
 # Q3 — BST in real life application
@@ -99,15 +100,13 @@ def insert_bst(root: Optional[TreeNode], value: int)
 # ------------------------------------------------------------
 
 def build_class_bst():
-    init_id = 1001
+    # Create list of consecutive PY102 IDs for Group B
+    init_id = 1007
     num_stus = 6
     nums = [init_id + k for k in range(num_stus)]
     root = sorted_array_to_bst(nums)
-    root = insert_bst(root, 1010)
-    root = insert_bst(root, 999)
-    print("All Nodes in BST:")
+    root = insert_bst(root, 1013)
     print_all_nodes(root)
-    max_iterations = height(root)
-    print(f"\nMax possible iterations to search: {max_iterations}")
-    return root
-    raise NotImplementedError("Implement Q3 here.")
+
+    max_iter = height(root)
+    print(f"Max possible iterations to search a student id: {max_iter}")

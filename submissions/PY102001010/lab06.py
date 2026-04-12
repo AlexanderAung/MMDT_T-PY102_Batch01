@@ -53,8 +53,7 @@ def helper_fun2_(arr, i):
 def schedule_next_job(jobs, new_job):
     jobs.append(new_job)
     updated_jobs = helper_fun1_(jobs, len(jobs) - 1)
-    return updated_jobs
-    pass
+    return updated_jobs   
 
 
 # ------------------------------------------------------------
@@ -87,7 +86,6 @@ def process_next_job(arr):
         arr[0] = last_item
         helper_fun2_(arr,0)
         return highest_priority_job, arr
-    pass
 
 # ------------------------------------------------------------
 # Q3 — personal priority reflection
@@ -112,19 +110,18 @@ def process_next_job(arr):
 # ------------------------------------------------------------
 
 def personal_priority_q():
-    priority_q = [
-        (1, "health"),
-        (2, "family"),
+    priorty_q = [
         (4, "education"),
+        (3, "family"),
+        (1, "health"),
         (5, "friends"),
-        (6, "money")
+        (2, "money")
     ]
-    new_item = (3, "security")
-    priority_q.append(new_item)
-    current_index = len(priority_q) - 1
-    updated_priority_q = helper_fun1_(priority_q, current_index)
+    new_item = (2, "security")
 
-    return updated_priority_q
+    priorty_q.append(new_item)
 
-    return None
+    for i in range(1, len(priorty_q)):
+        helper_fun1_(priorty_q, i)
 
+    return priorty_q
